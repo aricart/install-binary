@@ -113,9 +113,8 @@ async function run() {
       osArch,
     );
     if (!assetName) {
-      throw new Error(`${JSON.stringify(release.data.assets)}`);
-      // const found = release.data.assets.map((f) => f.name);
-      // throw new Error(`Failed to find release for ${tag}. Found: ${found}`);
+      const found = release.data.assets.map((f) => f.name);
+      throw new Error(`Failed to find release for ${tag}. Found: ${found}`);
     }
 
     const downloadUrl = release.data.assets.find(
@@ -244,8 +243,10 @@ function selectAsset(
     }
   }
 
+  const re = `[^A-Za-z0-9](${targetWords.join("|")})(.*\\.(gz|tgz|bz2|zip|exe)|([^.]*))$`
+  core.info(re);
   const reTarget = new RegExp(
-    `[^A-Za-z0-9](${targetWords.join("|")})(.*\\.(gz|tgz|bz2|zip|exe)|([^.]*))$`,
+    re,
     "i",
   );
 
