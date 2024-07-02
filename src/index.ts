@@ -105,7 +105,6 @@ async function run() {
       core.info(`Cache disabled`);
     }
 
-    throw new Error(`${JSON.stringify(release.data.assets)}`);
 
     const assetName = selectAsset(
       release.data.assets.map((v) => v.name),
@@ -114,8 +113,9 @@ async function run() {
       osArch,
     );
     if (!assetName) {
-      const found = release.data.assets.map((f) => f.name);
-      throw new Error(`Failed to find release for ${tag}. Found: ${found}`);
+      throw new Error(`${JSON.stringify(release.data.assets)}`);
+      // const found = release.data.assets.map((f) => f.name);
+      // throw new Error(`Failed to find release for ${tag}. Found: ${found}`);
     }
 
     const downloadUrl = release.data.assets.find(
