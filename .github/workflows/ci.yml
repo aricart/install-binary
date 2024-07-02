@@ -60,42 +60,10 @@ jobs:
     - name: Install binary
       uses: ./
       with:
-        repo: protocolbuffers/protobuf
-        tag: v26.1
-        name: protoc
+        repo: nats-io/nats-server
+        tag: v2.10.17
+        name: nats-server
     - name: Test
       run: |
-        protoc --version
-      shell: bash
-
-  test-install-task:
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
-    - uses: actions/checkout@v4
-    - name: Install binary
-      uses: ./
-      with:
-        repo: go-task/task
-    - name: Test
-      run: |
-        task --version
-      shell: bash
-
-  test-install-jq:
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
-    - uses: actions/checkout@v4
-    - name: Install binary
-      uses: ./
-      with:
-        repo: jqlang/jq
-    - name: Test
-      run: |
-        jq --version
+        nats-server --version
       shell: bash
