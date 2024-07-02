@@ -105,7 +105,7 @@ async function run() {
       core.info(`Cache disabled`);
     }
 
-    core.info(`${release.data.assets}`);
+    throw new Error(`${JSON.stringify(release.data.assets)}`);
 
     const assetName = selectAsset(
       release.data.assets.map((v) => v.name),
