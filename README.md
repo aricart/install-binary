@@ -3,6 +3,12 @@
 [![CI](https://img.shields.io/github/actions/workflow/status/sigoden/aichat/ci.yaml)](https://github.com/sigoden/install-binary/actions/workflows/ci.yml)
 [![GitHub Release](https://img.shields.io/github/v/release/sigoden/install-binary)](https://github.com/sigoden/install-binary/releases)
 
+> [!NOTE]
+> [This is a simple fork of sigoden/install-binary](https://github.com/sigoden/install-binary) which solves
+> a small issue when there are multiple artifacts that match the binary/os/architecture but have different
+> packaging (zip/tgz/etc). This version simply selects the first artifact. A fix will be contributed to
+> the above repo, and when it gets released this action will be deprecated.
+
 This action installs a binary from Github Releases:
 
 - Automatically downloads and caches the binary, adding it to the PATH.
