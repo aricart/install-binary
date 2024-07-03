@@ -291,6 +291,8 @@ function selectAsset(
           return list[i];
         }
       }
+    } else {
+      return list[0];
     }
   }
 }
