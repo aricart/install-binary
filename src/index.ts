@@ -278,6 +278,8 @@ function selectAsset(
     }
   }
 
+  core.info(`${list}`)
+
   if (list.length === 1) {
     return list[0];
   } else if (list.length > 1) {
