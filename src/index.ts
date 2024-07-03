@@ -244,7 +244,6 @@ function selectAsset(
   }
 
   const re = `[^A-Za-z0-9](${targetWords.join("|")})(.*\\.(gz|tgz|bz2|zip|exe)|([^.]*))$`
-  core.info(re);
   const reTarget = new RegExp(
     re,
     "i",
@@ -277,8 +276,6 @@ function selectAsset(
       list.push(...assets.filter((name) => reTarget.test(name)));
     }
   }
-
-  core.info(`${list}`)
 
   if (list.length === 1) {
     return list[0];
