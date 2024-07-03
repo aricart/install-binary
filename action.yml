@@ -1,4 +1,4 @@
-name: Install Binary from GitHub Releases
+name: Install Binary from GitHub Releases (aricart)
 description: Easily install a binary from a GitHub Release that works across repositories in Rust, Go, C++, and more.
 author: aricart
 branding:
