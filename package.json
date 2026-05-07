@@ -2,12 +2,13 @@
   "name": "aricart-install-binary",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "GitHub Action to install a binary from a GitHub Release",
   "main": "dist/index.js",
   "scripts": {
     "fmt": "prettier --write **/*.ts",
     "lint": "eslint **/*.ts",
-    "build": "rm -rf dist/ && ncc build src/index.ts --minify",
+    "build": "rm -rf dist/ && esbuild src/index.ts --bundle --platform=node --target=node24 --format=esm --minify --outfile=dist/index.js --banner:js=\"import { createRequire as _createRequire } from 'module'; const require = _createRequire(import.meta.url);\"",
     "run": "npm run build && RUNNER_TOOL_CACHE=./runner/cache RUNNER_TEMP=./runner/temp node dist/index.js",
     "all": "npm run fmt && npm run lint && npm run build"
   },
@@ -22,20 +23,20 @@
   },
   "homepage": "https://github.com/aricart/install-binary#readme",
   "dependencies": {
-    "@actions/cache": "^3.2.4",
-    "@actions/core": "^1.10.1",
-    "@actions/github": "^5.1.1",
-    "@actions/tool-cache": "^2.0.1",
-    "@octokit/plugin-throttling": "^5.0.1",
-    "isbinaryfile": "^5.0.2"
+    "@actions/cache": "^6.0.0",
+    "@actions/core": "^3.0.1",
+    "@actions/github": "^9.1.1",
+    "@actions/tool-cache": "^4.0.0",
+    "@octokit/plugin-throttling": "^11.0.3",
+    "isbinaryfile": "^6.0.0"
   },
   "devDependencies": {
-    "@types/node": "^20.12.12",
-    "@typescript-eslint/eslint-plugin": "^7.1.0",
-    "@typescript-eslint/parser": "^7.1.0",
-    "@vercel/ncc": "^0.38.1",
-    "eslint": "^8.57.0",
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.12.2",
+    "esbuild": "^0.28.0",
+    "eslint": "^10.3.0",
     "prettier": "^3.2.5",
-    "typescript": "^5.4.5"
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.59.2"
   }
 }
